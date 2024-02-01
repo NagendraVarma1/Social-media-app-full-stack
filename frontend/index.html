@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="main-heading">Social Media</h1>
+    </header>
+    <form id="my-form" onsubmit="createPost(event)">
+      <div class="input">
+        <label for="url">Post Link</label>
+        <input type="url" id="url" name="url" required />
+      </div>
+      <div class="input">
+        <label for="desc">Description</label>
+        <input type="text" id="desc" name="desc" required />
+      </div>
+      <button id="submitBtn" type="submit">Create Post</button>
+    </form>
+    <div id="allPosts">
+        <h1 class="main-heading">All Posts</h1>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
