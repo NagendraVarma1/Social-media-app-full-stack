@@ -8,9 +8,9 @@ function createPost(event) {
         imgURL,
         desc
     }
-    axios.post('https://crudcrud.com/api/ad75a687739446239fbf47d209948bdd/Post', postDetails)
+    axios.post('http://localhost:3000/post/add-post', postDetails)
     .then((res) => {
-        showPosts(res.data);
+        showPosts(res.data.newPostDetail)
     })
     .catch((err) => {
         console.log(err)
@@ -25,12 +25,15 @@ function showPosts(data) {
     div1.className = 'card'
 
     let img = document.createElement('img');
-    img.src = data.imgURL
+    img.className = 'postImage'
+    img.src = data.imageUrl;
 
     let desc = document.createElement('h2')
-    desc.innerText = data.desc;
+    desc.className = 'postDesc'
+    desc.innerText = data.description;
 
     let btn = document.createElement('button');
+    btn.className = 'commentBtn'
     btn.innerText = 'Comment'
 
     div1.appendChild(img)
@@ -42,12 +45,15 @@ function showPosts(data) {
     document.getElementById('desc').value = '';
 }
 
-function getAllPosts () {
-    axios.get('https://crudcrud.com/api/ad75a687739446239fbf47d209948bdd/Post')
+const getAllPosts = () => {
+    axios.get('http://localhost:3000/post/get-post')
     .then((res) => {
-        for(let i=0; i<res.data.length;i++) {
-            showPosts(res.data[i])
+        for(let i=0; i<res.data.allPostsDetails.length;i++) {
+            showPosts(res.data.allPostsDetails[i])
         }
+    })
+    .catch((err) => {
+        console.log(err)
     })
 }
 
